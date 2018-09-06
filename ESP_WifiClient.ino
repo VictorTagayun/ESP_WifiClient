@@ -7,6 +7,7 @@ void setup() {
 
   Serial.begin(115200);
   delay(10);
+  pinMode(LED_BUILTIN, OUTPUT);
 
   // We start by connecting to a WiFi network
   WiFi.mode(WIFI_STA);
@@ -29,9 +30,11 @@ void loop() {
   delay(5000);
 
   if (WiFi.status() == WL_CONNECTED) {
+    digitalWrite(LED_BUILTIN, HIGH);
     Serial.println(WiFi.localIP());
   } else {
     Serial.println("No Wifi!");
+    digitalWrite(LED_BUILTIN, LOW);
   }
 
 }
